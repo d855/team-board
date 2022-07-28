@@ -18,18 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::get('/projects', [ProjectsController::class, 'index'])->middleware(['auth'])->name('projects.index');
 
 Route::get('/projects/create', [ProjectsController::class, 'create'])->middleware(['auth'])->name('projects.create');
 
+Route::post('/projects', [ProjectsController::class, 'store'])->middleware(['auth'])->name('projects.store');
+
 Route::get('/projects/{project:slug}', [ProjectsController::class, 'show'])->middleware(['auth'])->name('projects.show');
 
+Route::patch('/projects/{project:slug}', [ProjectsController::class, 'update'])->middleware(['auth'])->name('projects.update');
 
-Route::post('/projects', [ProjectsController::class, 'store'])->middleware(['auth'])->name('projects.store');
+Route::get('/projects/{project:slug}/edit', [ProjectsController::class, 'edit'])->middleware(['auth'])->name('projects.edit');
 
 
 

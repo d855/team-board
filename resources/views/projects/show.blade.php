@@ -9,7 +9,7 @@
 			<div class="flex items-center">
 				<img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y" alt="avatar" class="rounded-full w-6 mr-2">
 
-				<a href="#" class="ml-4 bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Edit Project</a>
+				<a href="{{ route('projects.edit', $project) }}" class="ml-4 bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Edit Project</a>
 			</div>
 		</div>
 	</header>
