@@ -1,11 +1,11 @@
-<div class="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md">
-	<div class="flex items-center justify-between">
-		<span class="text-sm font-light text-gray-600">Mar 10, 2019</span>
+<div class="w-full md:max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md flex flex-col justify-between">
+	<div class="flex items-center justify-between flex-none">
+		<span class="text-sm font-light text-gray-600">{{ $project->created_at->diffForHumans() }}</span>
 	</div>
 
-	<div class="mt-2">
-		<a href="#" class="text-2xl font-bold text-gray-700 hover:text-gray-600 hover:underline">Accessibility tools for designers and developers</a>
-		<p class="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p>
+	<div class="mt-2 flex-1">
+		<a href="{{ route('projects.show', $project) }}" class="text-2xl font-bold text-gray-700 hover:text-gray-600 hover:underline">{{ $project->title }}</a>
+		<p class="mt-2 text-gray-600">{{ $project->description }}</p>
 	</div>
 
 	<div class="flex items-center justify-between mt-4">
