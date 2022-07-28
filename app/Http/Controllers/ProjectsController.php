@@ -35,6 +35,7 @@ class ProjectsController extends Controller
         ]);
 
         Project::create([
+            'owner_id' => auth()->user()->id,
             'title' => $validated['title'],
             'description' => $validated['description']
         ]);
