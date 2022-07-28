@@ -4,7 +4,7 @@
 		<a href="{{ route('projects.create') }}" class="bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Add new project</a>
 	</header>
 	<div class="py-12">
-		<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-4 sm:px-6 lg:px-8">
+		<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-4 sm:px-6">
 			@foreach($projects as $project)
 				@include('components.card')
 			@endforeach

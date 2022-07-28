@@ -11,7 +11,7 @@ class ProjectsController extends Controller
     public function index()
     {
         return view('projects.index', [
-            'projects' => Project::latest()->get()
+            'projects' => auth()->user()->accessibleProjects()
         ]);
     }
 
@@ -40,7 +40,7 @@ class ProjectsController extends Controller
             'description' => $validated['description']
         ]);
 
-        return redirect(route('projects.index'));
+        return $this->index();
 
     }
 
@@ -55,7 +55,7 @@ class ProjectsController extends Controller
     {
         $project->update($this->validateRequest());
 
-        return redirect(route('projects.index'));
+        return $this->index();
     }
 
     protected function validateRequest(): array
