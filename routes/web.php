@@ -30,6 +30,8 @@ Route::patch('/projects/{project:slug}', [ProjectsController::class, 'update'])-
 
 Route::get('/projects/{project:slug}/edit', [ProjectsController::class, 'edit'])->middleware(['auth'])->name('projects.edit');
 
+Route::delete('/projects/{project:slug}', [ProjectsController::class, 'destroy'])->middleware(['auth'])->name('projects.destroy');
+
 
 
 require __DIR__.'/auth.php';

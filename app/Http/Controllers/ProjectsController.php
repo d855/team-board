@@ -58,6 +58,13 @@ class ProjectsController extends Controller
         return $this->index();
     }
 
+    public function destroy( Project $project )
+    {
+        $project->delete();
+
+        return $this->index();
+    }
+
     protected function validateRequest(): array
     {
         return request()->validate([
