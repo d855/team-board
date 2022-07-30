@@ -15,8 +15,13 @@ class ProjectsController extends Controller
         ]);
     }
 
-    public function show( Project $project )
+    /**
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show( Project $project)
     {
+        $this->authorize('manage', $project);
+
         return view('projects.show', [
             'project' => $project
         ]);
@@ -27,20 +32,11 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
-    public function store( Request $request )
+    public function store()
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required'
-        ]);
+         auth()->user()->projects()->create($this->validateRequest());
 
-        Project::create([
-            'owner_id' => auth()->user()->id,
-            'title' => $validated['title'],
-            'description' => $validated['description']
-        ]);
-
-        return $this->index();
+        return redirect(route('projects.index'));
 
     }
 
@@ -51,18 +47,27 @@ class ProjectsController extends Controller
         ]);
     }
 
+    /**
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function update( Project $project)
     {
+        $this->authorize('update', $project);
         $project->update($this->validateRequest());
 
         return $this->index();
     }
 
+    /**
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function destroy( Project $project )
     {
+        $this->authorize('manage', $project);
+
         $project->delete();
 
-        return $this->index();
+        return redirect(route('projects.index'));
     }
 
     protected function validateRequest(): array

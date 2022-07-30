@@ -16,11 +16,15 @@
 			     class="rounded-full w-6 mr-2">
 			<a class="font-bold text-gray-700 cursor-pointer">{{ $project->owner->name }}</a>
 		</div>
-		<form action="{{ route('projects.destroy', $project) }}" method="POST">
-			@method('DELETE')
-			@csrf
+		@can('delete', $project)
+			<form action="{{ route('projects.destroy', $project) }}" method="POST">
+				@method('DELETE')
+				@csrf
 
-			<button type="submit" onclick="return confirm('Delete this project?')" class="text-xs text-red-500">Delete</button>
-		</form>
+				<button type="submit" onclick="return confirm('Delete this project?')" class="text-xs text-red-500">
+					Delete
+				</button>
+			</form>
+		@endcan
 	</div>
 </div>
