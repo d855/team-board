@@ -1,6 +1,7 @@
 <?php
 
     use App\Http\Controllers\ProjectsController;
+    use App\Http\Controllers\ProjectTasksController;
     use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,8 @@ Route::patch('/projects/{project:slug}', [ProjectsController::class, 'update'])-
 Route::get('/projects/{project:slug}/edit', [ProjectsController::class, 'edit'])->middleware(['auth'])->name('projects.edit');
 
 Route::delete('/projects/{project:slug}', [ProjectsController::class, 'destroy'])->middleware(['auth'])->name('projects.destroy');
+
+Route::post('/project/{project:slug}/tasks', [ProjectTasksController::class, 'store'])->middleware(['auth'])->name('projects.tasks');
 
 
 

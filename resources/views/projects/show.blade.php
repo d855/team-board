@@ -20,11 +20,25 @@
 				<div class="w-full mb-8">
 					<h2 class="text-lg text-gray-400 font-light mb-3">Tasks</h2>
 
+					<div class="w-full mb-10">
+						<form action="{{ route('projects.tasks', $project) }}" method="POST">
+							@csrf
+							<input type="text" name="body" placeholder="Add new task" class="w-full border-none px-5 py-4 rounded shadow">
+						</form>
+					</div>
+
 					<div class="w-full">
-						<div class="flex items-center">
-							<input type="text" class="w-full">
-							<input type="checkbox">
-						</div>
+						@foreach($project->tasks as $task)
+							<form action="" method="POST">
+								@method('PATCH')
+								@csrf
+
+								<div class="flex items-center mb-5">
+									<input type="text" name="body" value="{{ $task->body }}" class="w-full border-none px-5 py-4 mr-2 rounded shadow">
+									<input type="checkbox" name="completed" class="accent-green-400">
+								</div>
+							</form>
+						@endforeach
 					</div>
 				</div>
 			</div>
