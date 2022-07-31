@@ -35,6 +35,9 @@ Route::delete('/projects/{project:slug}', [ProjectsController::class, 'destroy']
 
 Route::post('/project/{project:slug}/tasks', [ProjectTasksController::class, 'store'])->middleware(['auth'])->name('projects.tasks');
 
+Route::patch('/project/{project:slug}/tasks/{task}', [ProjectTasksController::class, 'update'])->middleware(['auth'])
+    ->name('task.update');
+
 
 
 require __DIR__.'/auth.php';
