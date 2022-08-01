@@ -4,7 +4,7 @@
 			Edit your project
 		</h1>
 
-		<form action="{{ route('projects.update', $project) }}" method="POST">
+		<form action="{{ route('project.update', $project) }}" method="POST">
 			@method('PATCH')
 			@csrf
 
@@ -34,7 +34,7 @@
 				<div class="control">
 					<button type="submit" class="button is-link mr-2 px-5 py-2.5 text-sm font-medium text-teal-600 bg-gray-100 rounded-md hover:text-teal-600/75 transition">Update project</button>
 
-					<a href="{{ route('projects.index') }}" class="text-xs text-red-500">Cancel</a>
+					<a href="{{ route('project.index') }}" class="text-xs text-red-500">Cancel</a>
 				</div>
 			</div>
 		</form>

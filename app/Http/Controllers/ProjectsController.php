@@ -36,7 +36,7 @@ class ProjectsController extends Controller
     {
          auth()->user()->projects()->create($this->validateRequest());
 
-        return redirect(route('projects.index'));
+        return redirect(route('project.index'));
 
     }
 
@@ -55,7 +55,7 @@ class ProjectsController extends Controller
         $this->authorize('update', $project);
         $project->update($this->validateRequest());
 
-        return $this->index();
+        return redirect(route('project.show', $project));
     }
 
     /**
@@ -67,14 +67,15 @@ class ProjectsController extends Controller
 
         $project->delete();
 
-        return redirect(route('projects.index'));
+        return redirect(route('project.index'));
     }
 
     protected function validateRequest(): array
     {
         return request()->validate([
             'title' => 'sometimes|required',
-            'description' => 'sometimes|required'
+            'description' => 'sometimes|required',
+            'notes' => 'nullable'
         ]);
     }
 }

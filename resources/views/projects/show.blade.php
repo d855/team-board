@@ -2,7 +2,7 @@
 	<header class="flex items-center my-6 pb-4">
 		<div class="flex justify-between items-end w-full">
 			<p class="text-gray-400 font-light">
-				<a href="{{ route('projects.index') }}" class="text-gray-400 no-underline hover:underline">My
+				<a href="{{ route('project.index') }}" class="text-gray-400 no-underline hover:underline">My
 				                                                                                           projects</a>
 				/ {{ $project->title }}
 			</p>
@@ -12,7 +12,7 @@
 				     alt="avatar"
 				     class="rounded-full w-6 mr-2">
 
-				<a href="{{ route('projects.edit', $project) }}"
+				<a href="{{ route('project.edit', $project) }}"
 				   class="ml-4 bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Edit
 				                                                                                                                         Project</a>
 			</div>
@@ -26,7 +26,7 @@
 				<div class="w-full mb-8">
 
 					<div class="w-full mb-10">
-						<form action="{{ route('projects.tasks', $project) }}" method="POST">
+						<form action="{{ route('project.tasks', $project) }}" method="POST">
 							@csrf
 							<input type="text"
 							       name="body"
@@ -54,6 +54,19 @@
 							</form>
 						@endforeach
 					</div>
+				</div>
+
+				<div>
+					<h2 class="text-lg font-light text-gray-400 mb-3">General Notes</h2>
+
+					<form action="{{ route('project.update', $project) }}" method="POST">
+						@csrf
+						@method('PATCH')
+
+						<textarea name="notes" class="w-full border-none px-5 py-4 rounded shadow" style="min-height: 200px;" placeholder="Write down your notes.">{{ $project->notes }}</textarea>
+
+						<button type="submit" class="bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Save</button>
+					</form>
 				</div>
 			</div>
 

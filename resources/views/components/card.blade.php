@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="mt-2 flex-1">
-		<a href="{{ route('projects.show', $project) }}"
+		<a href="{{ route('project.show', $project) }}"
 		   class="text-2xl font-bold text-gray-700 hover:text-gray-600 hover:underline">{{ $project->title }}</a>
 		<p class="mt-2 text-gray-600 line-clamp-5">{{ $project->description }}</p>
 	</div>
@@ -17,7 +17,7 @@
 			<a class="font-bold text-gray-700 cursor-pointer">{{ $project->owner->name }}</a>
 		</div>
 		@can('delete', $project)
-			<form action="{{ route('projects.destroy', $project) }}" method="POST">
+			<form action="{{ route('project.destroy', $project) }}" method="POST">
 				@method('DELETE')
 				@csrf
 
