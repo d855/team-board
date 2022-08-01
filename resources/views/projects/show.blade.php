@@ -8,9 +8,11 @@
 			</p>
 
 			<div class="flex items-center">
-				<img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y"
-				     alt="avatar"
-				     class="rounded-full w-6 mr-2">
+				@foreach($project->members as $member)
+					<img src="{{ $member->getAvatar() }}"
+					     alt="{{ $member->name }}'s avatar"
+					     class="rounded-full w-6 mr-2">
+				@endforeach
 
 				<a href="{{ route('project.edit', $project) }}"
 				   class="ml-4 bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Edit
@@ -72,6 +74,20 @@
 
 			<div class="w-1/4">
 				@include('components.card')
+
+				<div class="flex flex-col mt-6">
+					<h3 class="font-normal text-xl py-4 mb-3 border-l-4 pl-4 border-teal-600">Invite a user</h3>
+
+					<form action="{{ route('project.invite', $project) }}" method="POST">
+						@csrf
+
+						<div class="mb-3">
+							<input type="email" name="email" class="border border-gray-200 rounded w-full py-2 px-3" placeholder="Email address">
+						</div>
+
+						<button type="submit" class="bg-teal-600 text-white py-2 px-4 shadow hover:bg-teal-700 rounded-md transition ease-in-out duration-150">Invite</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</main>

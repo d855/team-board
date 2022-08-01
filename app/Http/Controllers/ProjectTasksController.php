@@ -13,7 +13,7 @@ class ProjectTasksController extends Controller
     {
         $project->addTask(request('body'));
 
-        return redirect(route('projects.show', $project));
+        return redirect(route('project.show', $project));
     }
 
     public function update( Project $project, Task $task )
@@ -22,6 +22,6 @@ class ProjectTasksController extends Controller
 
         request('completed') ? $task->complete() : $task->incomplete();
 
-        return redirect(route('projects.show', $project));
+        return redirect(route('project.show', $project));
     }
 }

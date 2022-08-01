@@ -20,7 +20,7 @@ class ProjectsController extends Controller
      */
     public function show( Project $project)
     {
-        $this->authorize('manage', $project);
+        $this->authorize('update', $project);
 
         return view('projects.show', [
             'project' => $project

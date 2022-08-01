@@ -49,7 +49,14 @@ class User extends Authenticatable
 
     public function accessibleProjects()
     {
-        return Project::where('owner_id', $this->id)->latest()->get();
+        return Project::where('owner_id', $this->id)->orWhereHas('members', function($query) {
+            $query->where('user_id', $this->id);
+        })->latest()->get();
+    }
+
+    public function getAvatar(  )
+    {
+        return 'https://gravatar.com/avatar/' . md5( $this->email ) . '?s=200' . '&d=mp';
     }
 
 }

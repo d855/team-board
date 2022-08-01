@@ -1034,11 +1034,11 @@ select {
 .border {
   border-width: 1px;
 }
-.border-b {
-  border-bottom-width: 1px;
-}
 .border-l-4 {
   border-left-width: 4px;
+}
+.border-b {
+  border-bottom-width: 1px;
 }
 .border-b-2 {
   border-bottom-width: 2px;
@@ -1188,6 +1188,9 @@ select {
 .pb-4 {
   padding-bottom: 1rem;
 }
+.pl-4 {
+  padding-left: 1rem;
+}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1235,6 +1238,10 @@ select {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1257,14 +1264,14 @@ select {
 .font-light {
   font-weight: 300;
 }
+.font-normal {
+  font-weight: 400;
+}
 .font-semibold {
   font-weight: 600;
 }
 .font-bold {
   font-weight: 700;
-}
-.font-normal {
-  font-weight: 400;
 }
 .uppercase {
   text-transform: uppercase;
